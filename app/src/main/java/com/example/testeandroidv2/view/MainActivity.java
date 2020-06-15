@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.example.testeandroidv2.model.Extrato;
 import com.example.testeandroidv2.model.Pagamentos;
 import com.example.testeandroidv2.model.StatementList;
 import com.example.testeandroidv2.server.DataServer;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.github.rtoshiro.util.format.MaskFormatter;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -55,11 +57,13 @@ public class MainActivity extends AppCompatActivity {
     public ImageView logout;
     @BindView(R.id.appbar)
     public CollapsingToolbarLayout toolbarLayout;
+    @BindView(R.id.shimerFrameLayout)
+    public ShimmerFrameLayout shimmerFrameLayout;
+
     private List<StatementList> lists = new ArrayList<>();
     private Locale locale = new Locale("pt", "BR");
     private NumberFormat real = NumberFormat.getCurrencyInstance(locale);
     private double receita, despesa;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Pagamentos> call, Response<Pagamentos> response) {
                 if (response.isSuccessful()) {
+
                     lists = response.body().getStatementList();
                     for (StatementList list : lists) {
                         double receitas = Double.parseDouble(String.valueOf(list.mValue));
@@ -105,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                         saldo.setText(real.format(receita+despesa));
                     }
+                    shimmerFrameLayout.setVisibility(View.GONE);
+                    shimmerFrameLayout.stopShimmer();
 
                     ExtratoAdapter adapter = new ExtratoAdapter(MainActivity.this, lists);
                     listaGastos.setAdapter(adapter);

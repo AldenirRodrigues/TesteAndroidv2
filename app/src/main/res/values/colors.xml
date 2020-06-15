@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3b48ee</color>
     <color name="colorPrimaryDark">#3b48ee</color>
     <color name="colorAccent">#3b48ee</color>
+    <color name="placeholder_bg">#dddddd</color>
 
 
 

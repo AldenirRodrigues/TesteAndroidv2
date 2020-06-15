@@ -46,20 +46,19 @@ import static com.example.testeandroidv2.view.CadastroActivity.setaLog;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView)
-    RecyclerView listaGastos;
+    public RecyclerView listaGastos;
     @BindView(R.id.textConta)
-    TextView conta;
+    public TextView conta;
     @BindView(R.id.textSaldo)
-    TextView saldo;
+    public TextView saldo;
     @BindView(R.id.icLogout)
-    ImageView logout;
+    public ImageView logout;
     @BindView(R.id.appbar)
-    CollapsingToolbarLayout toolbarLayout;
-    List<StatementList> lists = new ArrayList<>();
-    FirebaseAuth autenticacao;
-    FirebaseDatabase firebaseDatabase;
-    Locale locale = new Locale("pt", "BR");
-    NumberFormat real = NumberFormat.getCurrencyInstance(locale);
+    public CollapsingToolbarLayout toolbarLayout;
+    private List<StatementList> lists = new ArrayList<>();
+    private Locale locale = new Locale("pt", "BR");
+    private NumberFormat real = NumberFormat.getCurrencyInstance(locale);
+    private double receita, despesa;
 
 
     @Override
@@ -82,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void populaLista() {
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         listaGastos.setLayoutManager(manager);
@@ -96,12 +94,18 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     lists = response.body().getStatementList();
                     for (StatementList list : lists) {
-                        double soma = Double.parseDouble(String.valueOf(list.mValue));
-                        if (soma > 0) {
-                            soma += soma;
+                        double receitas = Double.parseDouble(String.valueOf(list.mValue));
+                        double despesas = Double.parseDouble(String.valueOf(list.mValue));
+                        if (receitas > 0) {
+                            receita += receitas;
+                            setaLog("Receitas: " + receita);
+                        } else if (despesas < 0) {
+                            despesa += despesas;
+                            setaLog("Despesa: " + despesa);
                         }
-                        saldo.setText(real.format(soma));
+                        saldo.setText(real.format(receita+despesa));
                     }
+
                     ExtratoAdapter adapter = new ExtratoAdapter(MainActivity.this, lists);
                     listaGastos.setAdapter(adapter);
                 } else {

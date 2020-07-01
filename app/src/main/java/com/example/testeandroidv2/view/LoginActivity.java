@@ -62,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             return true;
         }
-
         return false;
     }
 
@@ -79,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             concluirLogin();
         }
     }
+
+
 
     private void concluirLogin() {
         autenticacao = ConfiguracaoFirebase.getFirebaseAuth();

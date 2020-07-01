@@ -1,39 +1,30 @@
 package com.example.testeandroidv2.view;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.testeandroidv2.R;
 import com.example.testeandroidv2.adapter.ExtratoAdapter;
-import com.example.testeandroidv2.firebase.ConfiguracaoFirebase;
-import com.example.testeandroidv2.model.Extrato;
 import com.example.testeandroidv2.model.Pagamentos;
 import com.example.testeandroidv2.model.StatementList;
 import com.example.testeandroidv2.server.DataServer;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.github.rtoshiro.util.format.MaskFormatter;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Random;
 
 import butterknife.BindView;
@@ -64,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private Locale locale = new Locale("pt", "BR");
     private NumberFormat real = NumberFormat.getCurrencyInstance(locale);
     private double receita, despesa;
+    private DataServer dataServer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +63,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-
-        logout.setOnClickListener(v -> {
-            finish();
-        });
-        SharedPreferences preferences = getSharedPreferences(CAD_USER, 0);
-        if (preferences.contains("nome")) {
-            toolbarLayout.setTitle(preferences.getString("nome", "Usuário não definido"));
-        }
-
         populaLista();
         printaConta();
+        deslogaUsuario();
+        setaNome();
     }
+
+
 
 
     private void populaLista() {
@@ -90,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         listaGastos.setLayoutManager(manager);
         listaGastos.setHasFixedSize(true);
 
-        DataServer dataServer = new DataServer();
+        dataServer = new DataServer();
         Call<Pagamentos> call = dataServer.api.setaExtrato("1");
         call.enqueue(new Callback<Pagamentos>() {
             @Override
@@ -108,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                             despesa += despesas;
                             setaLog("Despesa: " + despesa);
                         }
-                        saldo.setText(real.format(receita+despesa));
+                        saldo.setText(real.format(receita + despesa));
                     }
                     shimmerFrameLayout.setVisibility(View.GONE);
                     shimmerFrameLayout.stopShimmer();
@@ -123,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Pagamentos> call, Throwable t) {
                 setaLog(t.getMessage());
-
             }
         });
 
@@ -135,6 +121,20 @@ public class MainActivity extends AppCompatActivity {
         MaskTextWatcher textWatcher = new MaskTextWatcher(conta, maskFormatter);
         conta.addTextChangedListener(textWatcher);
         conta.setText(String.valueOf(random1));
+    }
+
+    private void deslogaUsuario() {
+        logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            finish();
+        });
+    }
+
+    private void setaNome() {
+        SharedPreferences preferences = getSharedPreferences(CAD_USER, 0);
+        if (preferences.contains("nome")) {
+            toolbarLayout.setTitle(preferences.getString("nome", "Usuário não definido"));
+        }
     }
 
 }

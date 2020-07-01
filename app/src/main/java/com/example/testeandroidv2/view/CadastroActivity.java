@@ -51,7 +51,6 @@ public class CadastroActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0);
         ButterKnife.bind(this);
 
-
     }
 
     private boolean validaCadastro(String nome, String email, String senha, String confirma) {
@@ -69,7 +68,6 @@ public class CadastroActivity extends AppCompatActivity {
         } else {
             return true;
         }
-
         return false;
     }
 
@@ -114,7 +112,6 @@ public class CadastroActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnCadastrar)
     void concluirCadastro() {
-
         String nome = nomeCad.getText().toString();
         String email = emailCad.getText().toString();
         String senha = senhaCad.getText().toString();
@@ -135,5 +132,7 @@ public class CadastroActivity extends AppCompatActivity {
         editor.putString("nome", nome);
         editor.commit();
     }
+
+
 
 }

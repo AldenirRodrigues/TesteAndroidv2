@@ -37,8 +37,6 @@ public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.ExtratoV
         holder.data.setText(extrato.getData());
         holder.valor.setText(extrato.getmValue());
         holder.descricao.setText(extrato.getDesc());
-
-
     }
 
     @Override
@@ -58,11 +56,6 @@ public class ExtratoAdapter extends RecyclerView.Adapter<ExtratoAdapter.ExtratoV
         public ExtratoViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(v -> {
-
-
-
-            });
         }
     }
 }

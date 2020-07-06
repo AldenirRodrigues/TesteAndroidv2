@@ -10,31 +10,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testeandroidv2.R;
 import com.example.testeandroidv2.adapter.ExtratoAdapter;
-import com.example.testeandroidv2.interfaces.ExtratoInterface;
-import com.example.testeandroidv2.model.BillsToPay;
+import com.example.testeandroidv2.interfaces.ExtratInterface;
+import com.example.testeandroidv2.model.ListExtract;
 import com.example.testeandroidv2.model.StatementList;
 import com.example.testeandroidv2.server.DataServer;
 import com.example.testeandroidv2.util.SharedPref;
 import com.example.testeandroidv2.view.LoginActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExtratoPresenter implements ExtratoInterface.Prsesenter, Comparator<StatementList> {
-    private ExtratoInterface.View view;
-    private ExtratoInterface.Model model;
+public class ExtratPresenter implements ExtratInterface.Prsesenter{
+    private ExtratInterface.View view;
+    private ExtratInterface.Model model;
     private DataServer server;
     private List<StatementList> listSpending;
     private RecyclerView recyclerView;
     private AlertDialog alertDialog;
 
 
-    public ExtratoPresenter(ExtratoInterface.View view, RecyclerView recyclerView) {
+    public ExtratPresenter(ExtratInterface.View view, RecyclerView recyclerView) {
         this.view = view;
         this.recyclerView = recyclerView;
         onListSpending();
@@ -63,19 +69,21 @@ public class ExtratoPresenter implements ExtratoInterface.Prsesenter, Comparator
     public void setDataServer(String userId) {
         server = new DataServer();
 
-        Call<BillsToPay> call = server.api.setaExtrato(userId);
-        call.enqueue(new Callback<BillsToPay>() {
+        Call<ListExtract> call = server.api.setaExtrato(userId);
+        call.enqueue(new Callback<ListExtract>() {
             @Override
-            public void onResponse(Call<BillsToPay> call, Response<BillsToPay> response) {
+            public void onResponse(Call<ListExtract> call, Response<ListExtract> response) {
                 listSpending = new ArrayList<>();
                 if (response.isSuccessful()) {
                     listSpending = response.body().getStatementList();
+
                     view.setAdapter(new ExtratoAdapter((Context) view, listSpending));
                 }
             }
 
             @Override
-            public void onFailure(Call<BillsToPay> call, Throwable t) {
+            public void onFailure(Call<ListExtract> call, Throwable t) {
+
 
             }
         });
@@ -97,8 +105,4 @@ public class ExtratoPresenter implements ExtratoInterface.Prsesenter, Comparator
         alertDialog.show();
     }
 
-    @Override
-    public int compare(StatementList o1, StatementList o2) {
-        return o1.getDate().compareTo(o2.getData());
-    }
 }

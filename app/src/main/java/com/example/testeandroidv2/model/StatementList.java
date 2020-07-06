@@ -1,12 +1,10 @@
 
 package com.example.testeandroidv2.model;
 
-import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.example.testeandroidv2.presenter.ExtratPresenter;
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Locale;
 
 public class StatementList {
@@ -19,8 +17,8 @@ public class StatementList {
     private String title;
     @SerializedName("value")
     public String mValue;
-    Locale locale = new Locale("pt", "BR");
-    NumberFormat real = NumberFormat.getCurrencyInstance(locale);
+    private Locale locale = new Locale("pt", "BR");
+    private NumberFormat real = NumberFormat.getCurrencyInstance(locale);
 
 
     public String getDate() {
@@ -63,18 +61,4 @@ public class StatementList {
         return real.format(value);
     }
 
-    public void setmValue(String mValue) {
-        this.mValue = mValue;
-    }
-
-
-    @Override
-    public String toString() {
-        return "StatementList{" +
-                "data='" + data + '\'' +
-                ", desc='" + desc + '\'' +
-                ", title='" + title + '\'' +
-                ", mValue='" + mValue + '\'' +
-                '}';
-    }
 }

@@ -1,13 +1,9 @@
 package com.example.testeandroidv2.interfaces;
 
-import android.content.Intent;
-
-import androidx.recyclerview.widget.RecyclerView;
 import com.example.testeandroidv2.adapter.ExtratoAdapter;
-import com.example.testeandroidv2.model.UserAccount;
 import com.example.testeandroidv2.util.SharedPref;
 
-public interface ExtratoInterface {
+public interface ExtratInterface {
     interface View{
         void setAdapter(ExtratoAdapter adapter);
         void setName(String name);
@@ -22,5 +18,6 @@ public interface ExtratoInterface {
         void onLogout();
     }
     interface Model{
+
     }
 }

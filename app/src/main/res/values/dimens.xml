@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="width_btn">180dp</dimen>
+    <dimen name="margin_btn">50dp</dimen>
+    <dimen name="size_btn">18sp</dimen>
+    <dimen name="whidth_edit_login">50dp</dimen>
+    <dimen name="margin_left_edit_login">32dp</dimen>
+    <dimen name="margin_top_edit_login">16dp</dimen>
+    <dimen name="padin_left_edit_login">8dp</dimen>
+    <dimen name="margin_top_im_login">32dp</dimen>
+
+
+</resources>

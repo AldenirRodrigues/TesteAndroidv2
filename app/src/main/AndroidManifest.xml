@@ -11,13 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".view.CadastroActivity"
-            android:theme="@style/ThemeLogin"/>
-        <activity android:name=".view.MainActivity"/>
+        <activity android:name=".view.MainActivity" />
         <activity
             android:name=".view.LoginActivity"
-            android:theme="@style/ThemeLogin" >
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

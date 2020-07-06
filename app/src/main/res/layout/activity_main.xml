@@ -18,7 +18,7 @@
             app:expandedTitleGravity="top"
             app:expandedTitleMarginStart="16dp"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:title="Aldenir Rodrigues"
+            app:title="Nome"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.Toolbar
@@ -67,9 +67,21 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="40dp"
-                    android:text="2050/01.111222-4"
+                    android:text="@string/strCount"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/textAgencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textConta"
+                    android:layout_toEndOf="@+id/textConta"
+                    android:layout_toRightOf="@+id/textConta"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:text="@string/strAgency" />
+
 
                 <TextView
                     android:id="@+id/textSaldo"
@@ -81,7 +93,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="R$1.000,00"
+                    android:text="@string/strBalance"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
 
@@ -95,7 +107,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Saldo"
+                    android:text="@string/strSaldo"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -127,8 +139,8 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Recentes"
-                    android:textSize="18dp" />
+                    android:text="@string/strRecentes"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout

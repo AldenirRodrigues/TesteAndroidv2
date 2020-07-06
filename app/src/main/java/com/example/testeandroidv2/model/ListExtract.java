@@ -1,12 +1,11 @@
 
 package com.example.testeandroidv2.model;
 
-import com.example.testeandroidv2.interfaces.ExtratoInterface;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class BillsToPay {
+public class ListExtract {
 
     @SerializedName("statementList")
     private List<StatementList> mStatementList;

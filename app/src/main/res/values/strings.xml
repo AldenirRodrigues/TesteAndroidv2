@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">TesteAndroidv2</string>
+    <string name="strLogin">Login</string>
+    <string name="strSenha">Senha...</string>
+    <string name="strEmail">Email...</string>
+    <string name="strCount">0000</string>
+    <string name="strBalance">R$0.000,00</string>
+    <string name="strSaldo">Saldo</string>
+    <string name="strRecentes">Recentes</string>
+    <string name="strAgency">/00.000000-0</string>
+    <string name="strTitle">Atenção!</string>
+    <string name="strMensage">Deseja mesmo sair?</string>
+    <string name="exit">Sair</string>
+    <string name="cancel">Cancelar</string>
+
+    <string-array name="strNum">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
+
 </resources>

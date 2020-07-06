@@ -1,42 +1,32 @@
 package com.example.testeandroidv2.view;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testeandroidv2.R;
 import com.example.testeandroidv2.adapter.ExtratoAdapter;
-import com.example.testeandroidv2.model.Pagamentos;
+import com.example.testeandroidv2.interfaces.ExtratInterface;
 import com.example.testeandroidv2.model.StatementList;
-import com.example.testeandroidv2.server.DataServer;
+import com.example.testeandroidv2.presenter.ExtratPresenter;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.firebase.auth.FirebaseAuth;
 
+import java.sql.Date;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import butterknife.OnClick;
 
-import static com.example.testeandroidv2.view.CadastroActivity.CAD_USER;
-import static com.example.testeandroidv2.view.CadastroActivity.setaLog;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ExtratInterface.View{
+    private ExtratPresenter presenter;
 
     @BindView(R.id.recyclerView)
     public RecyclerView listaGastos;
@@ -44,97 +34,58 @@ public class MainActivity extends AppCompatActivity {
     public TextView conta;
     @BindView(R.id.textSaldo)
     public TextView saldo;
-    @BindView(R.id.icLogout)
-    public ImageView logout;
+    @BindView(R.id.textAgencia)
+    public TextView agencia;
     @BindView(R.id.appbar)
     public CollapsingToolbarLayout toolbarLayout;
     @BindView(R.id.shimerFrameLayout)
     public ShimmerFrameLayout shimmerFrameLayout;
 
-    private List<StatementList> lists = new ArrayList<>();
-    private Locale locale = new Locale("pt", "BR");
-    private NumberFormat real = NumberFormat.getCurrencyInstance(locale);
-    private double receita, despesa;
-    private DataServer dataServer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        populaLista();
-        printaConta();
-        deslogaUsuario();
-        setaNome();
+        presenter = new ExtratPresenter(this, listaGastos);
     }
 
+    @Override
+    public void setName(String name) {
+        toolbarLayout.setTitle(name);
+    }
 
+    @Override
+    public void setCount(String count) {
+        conta.setText(count);
+    }
 
+    @Override
+    public void setBalance(String balance) {
+        NumberFormat nFormat = NumberFormat.getCurrencyInstance();
+        String value = nFormat.format(Double.parseDouble(balance));
+        saldo.setText(value);
+    }
 
-    private void populaLista() {
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
-        listaGastos.setLayoutManager(manager);
-        listaGastos.setHasFixedSize(true);
+    @Override
+    public void setAgincy(String agency) {
+        SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("/NN.NNNNNN-N");
+        MaskTextWatcher textWatcher = new MaskTextWatcher(agencia, maskFormatter);
+        agencia.addTextChangedListener(textWatcher);
+        agencia.setText(agency);
+    }
 
-        dataServer = new DataServer();
-        Call<Pagamentos> call = dataServer.api.setaExtrato("1");
-        call.enqueue(new Callback<Pagamentos>() {
-            @Override
-            public void onResponse(Call<Pagamentos> call, Response<Pagamentos> response) {
-                if (response.isSuccessful()) {
+    @Override
+    public void setAdapter(ExtratoAdapter adapter) {
+        shimmerFrameLayout.setVisibility(View.GONE);
+        shimmerFrameLayout.stopShimmer();
 
-                    lists = response.body().getStatementList();
-                    for (StatementList list : lists) {
-                        double receitas = Double.parseDouble(String.valueOf(list.mValue));
-                        double despesas = Double.parseDouble(String.valueOf(list.mValue));
-                        if (receitas > 0) {
-                            receita += receitas;
-                            setaLog("Receitas: " + receita);
-                        } else if (despesas < 0) {
-                            despesa += despesas;
-                            setaLog("Despesa: " + despesa);
-                        }
-                        saldo.setText(real.format(receita + despesa));
-                    }
-                    shimmerFrameLayout.setVisibility(View.GONE);
-                    shimmerFrameLayout.stopShimmer();
-
-                    ExtratoAdapter adapter = new ExtratoAdapter(MainActivity.this, lists);
-                    listaGastos.setAdapter(adapter);
-                } else {
-                    setaLog("Erro! " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Pagamentos> call, Throwable t) {
-                setaLog(t.getMessage());
-            }
-        });
+        listaGastos.setAdapter(adapter);
 
     }
 
-    private void printaConta() {
-        int random1 = new Random(13).nextInt();
-        SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNNN/NN.NNNNNN-N");
-        MaskTextWatcher textWatcher = new MaskTextWatcher(conta, maskFormatter);
-        conta.addTextChangedListener(textWatcher);
-        conta.setText(String.valueOf(random1));
+    @OnClick(R.id.icLogout)
+    void logout() {
+        presenter.onLogout();
     }
-
-    private void deslogaUsuario() {
-        logout.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            finish();
-        });
-    }
-
-    private void setaNome() {
-        SharedPreferences preferences = getSharedPreferences(CAD_USER, 0);
-        if (preferences.contains("nome")) {
-            toolbarLayout.setTitle(preferences.getString("nome", "Usuário não definido"));
-        }
-    }
-
 }

@@ -1,18 +1,17 @@
 package com.example.testeandroidv2.interfaces;
 
-import android.content.Context;
+import android.content.Intent;
 import android.widget.EditText;
-import com.example.testeandroidv2.model.UserAccount;
 
 public interface LoginInterface {
      interface View{
+         void onLoginSuccess(Intent intent);
+         void onLoginError(String menssage);
      }
      interface Prsesenter{
-         void onViewDestroy();
-         void getUsuario(EditText editEmail, EditText editSenha, Context context);
-         void onViewCreate();
+         void onLogin(EditText email, EditText password);
+         boolean onValidPassword(EditText email, EditText password);
      }
      interface Model{
-         UserAccount loginUser();
      }
 }

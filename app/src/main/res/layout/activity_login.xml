@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,88 +7,61 @@
     android:orientation="vertical"
     tools:context=".view.LoginActivity">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_top_im_login"
+        android:src="@mipmap/logo" />
+
+
+    <EditText
+        android:id="@+id/editEmailLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:orientation="vertical">
+        android:layout_height="@dimen/whidth_edit_login"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_left_edit_login"
+        android:inputType="textEmailAddress|textNoSuggestions"
+        android:background="@drawable/bg_edittext_login"
+        android:hint="@string/strEmail"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/padin_left_edit_login">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/logo" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="32dp"
-        android:paddingRight="32dp">
-
-        <EditText
-            android:id="@+id/editEmailLogin"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="16dp"
-            android:maxLines="1"
-            android:background="@drawable/bg_edittext_login"
-            android:hint="Email..."
-            android:paddingLeft="8dp">
-
-        </EditText>
+    </EditText>
 
         <EditText
             android:id="@+id/editSenhaLogin"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/whidth_edit_login"
             android:background="@drawable/bg_edittext_login"
-            android:hint="Senha..."
+            android:hint="@string/strSenha"
+            android:layout_below="@+id/editEmailLogin"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_left_edit_login"
+            android:layout_marginTop="@dimen/margin_top_edit_login"
             android:maxLines="1"
             android:inputType="textPassword"
-            android:paddingLeft="8dp" />
+            android:paddingLeft="@dimen/padin_left_edit_login" />
+
+    <Button
+        android:id="@+id/btnLogar"
+        android:layout_width="@dimen/width_btn"
+        android:layout_height="wrap_content"
+        android:text="@string/strLogin"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/size_btn"
+        android:background="@drawable/bg_button_login"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="@dimen/margin_btn"
+        android:layout_below="@+id/editSenhaLogin" />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.8"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textCadastrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="setaCadastro"
-            android:gravity="center"
-            android:text="Se ainda não tem cadastro, clique aqui." />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnLogar"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_login"
-            android:text="Login"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="18dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
 
 public class EditTexttUtil {
 
-    public static boolean onValidaInputLogin(EditText editLogin, EditText editPassword) {
-        String password = editPassword.getText().toString();
+    public static String onValidInputEmail(EditText editLogin) {
         String email = editLogin.getText().toString();
 
         SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
@@ -23,62 +22,67 @@ public class EditTexttUtil {
         String cpf = email.replace(".", "").replace("-", "");
 
         if (TextUtils.isEmpty(email)) {
-            editLogin.setError("Ops, precisamos do email ou CPF!");
+            return "Ops, precisamos do email ou CPF!";
 
         } else if (cpf.matches("[0-9]*")) {
 
             if (!CPFUtil.isCPF(cpf)) {
-                editLogin.setError("Ops, este CPF não parece válido!");
+                return "Ops, este CPF não parece válido!";
             }
-            return onValidInputPaswor(editPassword, password);
+            return null;
 
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editLogin.setError("Ops, email não parece válido!");
+            return "Ops, email não parece válido!";
         }
-        return onValidInputPaswor(editPassword, password);
+        return null;
     }
 
-    private static boolean onValidInputPaswor(EditText editPassword, String password) {
+    public static String onValidInputPaswor(EditText edtiPassword) {
+        String password = edtiPassword.getText().toString();
 
         if (TextUtils.isEmpty(password))
-            editPassword.setError("Ops, não esqueça da senha!");
+            return "Ops, não esqueça da senha!";
 
         else if (password.length() < 5)
-            editPassword.setError("Ops, a senha não pode ser menor que 5!");
+            return "Ops, a senha não pode ser menor que 5!";
+
+        else if (onValidInputNumber(password) != null)
+            return onValidInputNumber(password);
+
+        else if (onValidInputEsp(password) != null)
+            return onValidInputEsp(password);
+
+        else if (onValidInputUper(password) != null)
+            return onValidInputUper(password);
         else
-            return onValidInputChar(editPassword, password);
-        return false;
+            return null;
     }
 
-    private static boolean onValidInputChar(EditText editPassword, String password) {
-
-        Matcher mNumber = Pattern.compile("[\\p{Alnum}]").matcher(password);
+    private static String onValidInputNumber(String password) {
+        Matcher mNumber = Pattern.compile("\\p{Digit}").matcher(password);
 
         while (mNumber.find()) {
-            return onValidInputEsp(editPassword, password);
+            return null;
         }
-        editPassword.setError("Senha deve conter um numero!");
-        return false;
+        return "Senha deve conter um numero!";
     }
 
-    private static boolean onValidInputEsp(EditText editPassword, String password) {
+    private static String onValidInputEsp(String password) {
         Matcher mEsp = Pattern.compile("[\\p{Punct}]").matcher(password);
 
         while (mEsp.find()) {
-            return onValidInputUper(editPassword, password);
+            return null;
         }
-        editPassword.setError("Senha deve conter um caracter especial!");
-        return false;
+        return "Senha deve conter um caracter especial!";
     }
 
-    private static boolean onValidInputUper(EditText editPassword, String password) {
+    private static String onValidInputUper(String password) {
         Matcher mUper = Pattern.compile("[\\p{javaUpperCase}]").matcher(password);
 
         while (mUper.find()) {
-            return true;
+            return null;
         }
-        editPassword.setError("Senha deve conter um caracter maiúsculo!");
-        return false;
+        return "Senha deve conter um caracter maiúsculo!";
     }
 
 

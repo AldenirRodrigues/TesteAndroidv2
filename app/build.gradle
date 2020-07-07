@@ -50,9 +50,6 @@ dependencies {
     //Mascara
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
-    //Toast GenderG
-    implementation 'com.github.GrenderG:Toasty:1.2.8'
-
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'

@@ -7,15 +7,10 @@ public interface LoginInterface {
      interface View{
          void onLoginSuccess(Intent intent);
          void onLoginError(String menssage);
+         void onPasswordError(String mensage);
      }
      interface Prsesenter{
          void onLogin(EditText email, EditText password);
-//         void validaInputLogin(EditText editLogin, EditText editPassword);
-//         boolean onValidPassword(EditText editEmail, EditText editPassword);
-//         void onValidLogin(EditText email);
-//         boolean onValidPassword();
-
-
      }
      interface Model{
      }

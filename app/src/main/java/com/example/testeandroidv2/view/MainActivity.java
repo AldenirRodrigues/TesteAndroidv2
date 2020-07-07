@@ -88,4 +88,10 @@ public class MainActivity extends AppCompatActivity implements ExtratInterface.V
     void logout() {
         presenter.onLogout();
     }
+
+    @Override
+    public void onBackPressed() {
+        presenter.onLogout();
+        super.onBackPressed();
+    }
 }

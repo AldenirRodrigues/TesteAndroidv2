@@ -10,7 +10,12 @@ public interface LoginInterface {
      }
      interface Prsesenter{
          void onLogin(EditText email, EditText password);
-         boolean onValidPassword(EditText email, EditText password);
+//         void validaInputLogin(EditText editLogin, EditText editPassword);
+//         boolean onValidPassword(EditText editEmail, EditText editPassword);
+//         void onValidLogin(EditText email);
+//         boolean onValidPassword();
+
+
      }
      interface Model{
      }

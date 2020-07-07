@@ -1,5 +1,10 @@
 package com.example.testeandroidv2.util;
 
+import android.widget.EditText;
+
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
+
 import java.util.InputMismatchException;
 
 public class CPFUtil {
@@ -59,10 +64,5 @@ public class CPFUtil {
         } catch (InputMismatchException erro) {
             return (false);
         }
-    }
-
-    public static String imprimeCPF(String CPF) {
-        return (CPF.substring(0, 3) + "." + CPF.substring(3, 6) + "." +
-                CPF.substring(6, 9) + "-" + CPF.substring(9, 11));
     }
 }

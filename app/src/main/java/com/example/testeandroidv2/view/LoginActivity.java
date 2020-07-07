@@ -2,6 +2,8 @@ package com.example.testeandroidv2.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,8 +43,9 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        loginPresenter = new LoginPresenter(this, editEmail, editPassword);
 
-        loginPresenter = new LoginPresenter(this);
+
     }
 
     @Override
@@ -58,8 +61,6 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.V
     @OnClick(R.id.btnLogar)
     void logar() {
         loginPresenter.onLogin(editEmail, editPassword);
-
-
     }
-}
 
+}

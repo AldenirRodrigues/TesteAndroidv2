@@ -2,6 +2,7 @@ package com.example.testeandroidv2.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.widget.EditText;
 
 import com.example.testeandroidv2.interfaces.LoginInterface;
@@ -10,6 +11,8 @@ import com.example.testeandroidv2.server.DataServer;
 import com.example.testeandroidv2.util.EditTexttUtil;
 import com.example.testeandroidv2.util.SharedPref;
 import com.example.testeandroidv2.view.MainActivity;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -19,28 +22,33 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginPresenter implements LoginInterface.Prsesenter {
     private LoginInterface.View loginView;
-    private EditText email, password;
+    private String email, password;
 
     public LoginPresenter(LoginInterface.View loginView, EditText editEmail, EditText editPssword) {
         this.loginView = loginView;
-        this.email = editEmail;
-        this.password = editPssword;
+        this.email = editEmail.getText().toString();
+        this.password = editPssword.getText().toString();
     }
 
 
     @Override
     public void onLogin(EditText editEmail, EditText editPssword) {
-        this.email = editEmail;
-        this.password = editPssword;
 
-        if (EditTexttUtil.onValidInputEmail(editEmail) != null) {
+        if (!TextUtils.isEmpty(email) && email.matches("[0-9]*")) {
+            SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+            MaskTextWatcher textWatcher = new MaskTextWatcher(editEmail, maskFormatter);
+            editEmail.addTextChangedListener(textWatcher);
+
+        } else if (EditTexttUtil.onValidInputEmail(editEmail) != null) {
             loginView.onLoginError(EditTexttUtil.onValidInputEmail(editEmail));
-        } else if (EditTexttUtil.onValidInputPaswor(editPssword) != null){
+
+        } else if (EditTexttUtil.onValidInputPaswor(editPssword) != null) {
             loginView.onPasswordError(EditTexttUtil.onValidInputPaswor(editPssword));
+
         } else {
             loginView.onInvisibleLayout();
             DataServer dataServer = new DataServer();
-            Observable<Login> call = dataServer.api.logaUsuario(email.getText().toString(), password.getText().toString());
+            Observable<Login> call = dataServer.api.logaUsuario(email, password);
             call.subscribeOn(Schedulers.newThread()).subscribe(new Observer<Login>() {
                 @Override
                 public void onSubscribe(Disposable d) {

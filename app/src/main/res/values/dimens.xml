@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Buttom login-->
     <dimen name="width_btn">180dp</dimen>
     <dimen name="margin_btn">50dp</dimen>
     <dimen name="size_btn">18sp</dimen>
+
+    <!--Edittext login-->
     <dimen name="whidth_edit_login">50dp</dimen>
     <dimen name="margin_left_edit_login">32dp</dimen>
     <dimen name="margin_top_edit_login">16dp</dimen>
     <dimen name="padin_left_edit_login">8dp</dimen>
+
+    <!--ImageView login-->
     <dimen name="margin_top_im_login">32dp</dimen>
+    <dimen name="whidth_im_logo">100dp</dimen>
+    <dimen name="height_im_logo">100dp</dimen>
+
+    <!--AppBar-->
+    <dimen name="appbar_height">280dp</dimen>
+    <dimen name="margin_title_start">16dp</dimen>
+
+    <!--ImageView logo-->
+    <dimen name="width_ic_logo">24dp</dimen>
+    <dimen name="heigth_ic_logo">24dp</dimen>
+    <dimen name="margin_top_ic_logo">36dp</dimen>
+    <dimen name="margin_end_ic_logo">16dp</dimen>
+    <dimen name="margin_right_ic_logo">16dp</dimen>
+
+    <!--Layout Recente-->
+    <dimen name="padding_linear_layout">16dp</dimen>
+    <dimen name="margin_start_text">16dp</dimen>
+    <dimen name="recent_text_size">18sp</dimen>
+
+    <dimen name="agency_text_size">24sp</dimen>
+    <dimen name="margin_bottom_conta">40dp</dimen>
+
+    <dimen name="conta_text_size">24sp</dimen>
+    <dimen name="margin_bottom_desc_conta">8dp</dimen>
+
+    <dimen name="saldo_text_size">24sp</dimen>
+    <dimen name="margin_bottom_saldo">16dp</dimen>
+    <dimen name="margin_bottom_desc_saldo">8dp</dimen>
+
+    <!--CardView-->
+    <dimen name="margin_start_card">16dp</dimen>
+    <dimen name="height_card">80dp</dimen>
+    <dimen name="margin_left_card">16dp</dimen>
+    <dimen name="margin_top_card">4dp</dimen>
+    <dimen name="margim_bottom_card">4dp</dimen>
+    <dimen name="margin_end_card">16dp</dimen>
+    <dimen name="margin_right_card">16dp</dimen>
+    <dimen name="elevation_card">8dp</dimen>
+    <dimen name="radius_card">8dp</dimen>
+
+    <dimen name="margin_left_text_card">16dp</dimen>
+    <dimen name="margin_top_text_card">16dp</dimen>
+    <dimen name="margin_bottom_text_card">16dp</dimen>
+    <dimen name="margin_end_text_card">16dp</dimen>
 
 
 </resources>

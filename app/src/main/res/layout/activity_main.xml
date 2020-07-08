@@ -7,7 +7,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp">
+        android:layout_height="@dimen/appbar_height">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/appbar"
@@ -16,9 +16,9 @@
             android:theme="@style/AppThemeExtrato"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="top"
-            app:expandedTitleMarginStart="16dp"
+            app:expandedTitleMarginStart="@dimen/margin_title_start"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-            app:title="Nome"
+            app:title="@string/strName"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.Toolbar
@@ -34,14 +34,14 @@
 
                 <ImageView
                     android:id="@+id/icLogout"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/width_ic_logo"
+                    android:layout_height="@dimen/heigth_ic_logo"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="@dimen/margin_top_ic_logo"
+                    android:layout_marginEnd="@dimen/margin_end_ic_logo"
+                    android:layout_marginRight="@dimen/margin_right_ic_logo"
                     android:src="@drawable/logout_app" />
 
                 <TextView
@@ -51,10 +51,10 @@
                     android:layout_above="@+id/textConta"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Conta"
+                    android:layout_marginStart="@dimen/margin_start_text"
+                    android:layout_marginLeft="@dimen/margin_start_text"
+                    android:layout_marginBottom="@dimen/margin_bottom_desc_conta"
+                    android:text="@string/strConta"
                     android:textColor="@android:color/white" />
 
                 <TextView
@@ -64,12 +64,12 @@
                     android:layout_above="@+id/textView7"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="40dp"
+                    android:layout_marginStart="@dimen/margin_start_text"
+                    android:layout_marginLeft="@dimen/margin_start_text"
+                    android:layout_marginBottom="@dimen/margin_bottom_conta"
                     android:text="@string/strCount"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="@dimen/conta_text_size" />
 
                 <TextView
                     android:id="@+id/textAgencia"
@@ -79,7 +79,7 @@
                     android:layout_toEndOf="@+id/textConta"
                     android:layout_toRightOf="@+id/textConta"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp"
+                    android:textSize="@dimen/agency_text_size"
                     android:text="@string/strAgency" />
 
 
@@ -90,12 +90,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="@dimen/margin_start_text"
+                    android:layout_marginLeft="@dimen/margin_start_text"
+                    android:layout_marginBottom="@dimen/margin_bottom_saldo"
                     android:text="@string/strBalance"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="@dimen/saldo_text_size" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -104,9 +104,9 @@
                     android:layout_above="@+id/textSaldo"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginStart="@dimen/margin_start_text"
+                    android:layout_marginLeft="@dimen/margin_start_text"
+                    android:layout_marginBottom="@dimen/margin_bottom_desc_saldo"
                     android:text="@string/strSaldo"
                     android:textColor="@android:color/white" />
             </RelativeLayout>
@@ -129,8 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                android:padding="@dimen/padding_linear_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -140,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/strRecentes"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/recent_text_size" />
             </LinearLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -179,20 +178,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginBottom="410dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

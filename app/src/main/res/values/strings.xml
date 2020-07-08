@@ -12,19 +12,12 @@
     <string name="strMensage">Deseja mesmo sair?</string>
     <string name="exit">Sair</string>
     <string name="cancel">Cancelar</string>
-
-    <string-array name="strNum">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
+    <string name="strName">Nome</string>
+    <string name="strConta">Conta</string>
+    <string name="strData">Data</string>
+    <string name="strValue">R$ 0,00</string>
+    <string name="strDescPag">Tipo pagamento</string>
+    <string name="strPagamento">Pagamento</string>
 
 
 </resources>

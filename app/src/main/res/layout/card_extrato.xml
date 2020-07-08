@@ -2,15 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginRight="16dp"
-    android:elevation="8dp"
-    app:cardCornerRadius="8dp">
+    android:layout_height="@dimen/height_card"
+    android:layout_marginStart="@dimen/margin_start_card"
+    android:layout_marginLeft="@dimen/margin_left_card"
+    android:layout_marginTop="@dimen/margin_top_card"
+    android:layout_marginBottom="@dimen/margim_bottom_card"
+    android:layout_marginEnd="@dimen/margin_end_card"
+    android:layout_marginRight="@dimen/margin_right_card"
+    android:elevation="@dimen/elevation_card"
+    app:cardCornerRadius="@dimen/radius_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,10 +23,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Pagamento" />
+            android:layout_marginLeft="@dimen/margin_left_text_card"
+            android:layout_marginTop="@dimen/margin_top_text_card"
+            android:text="@string/strPagamento" />
 
         <TextView
             android:id="@+id/textDescricao"
@@ -35,10 +34,10 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Tipo pagamento" />
+            android:layout_marginStart="@dimen/margin_left_text_card"
+            android:layout_marginLeft="@dimen/margin_left_text_card"
+            android:layout_marginBottom="@dimen/margin_bottom_text_card"
+            android:text="@string/strDescPag" />
 
         <TextView
             android:id="@+id/textValor"
@@ -47,10 +46,10 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="R$ 0,00" />
+            android:layout_marginEnd="@dimen/margin_end_text_card"
+            android:layout_marginRight="@dimen/margin_end_text_card"
+            android:layout_marginBottom="@dimen/margin_bottom_text_card"
+            android:text="@string/strValue" />
 
         <TextView
             android:id="@+id/textData"
@@ -59,10 +58,9 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-
-            android:text="Data" />
+            android:layout_marginTop="@dimen/margin_top_text_card"
+            android:layout_marginEnd="@dimen/margin_end_text_card"
+            android:layout_marginRight="@dimen/margin_end_text_card"
+            android:text="@string/strData" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

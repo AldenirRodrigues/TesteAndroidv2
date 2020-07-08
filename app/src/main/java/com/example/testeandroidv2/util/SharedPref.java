@@ -46,7 +46,7 @@ public class SharedPref {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return new DetalsUserAccount(
                 sharedPreferences.getString(AGENCIA, null),
-                sharedPreferences.getString(BALANCE, "R$0,00"),
+                sharedPreferences.getString(BALANCE, "0.00"),
                 sharedPreferences.getString(CONTA, null),
                 sharedPreferences.getString(NOME, null),
                 sharedPreferences.getString(ID,"-1")

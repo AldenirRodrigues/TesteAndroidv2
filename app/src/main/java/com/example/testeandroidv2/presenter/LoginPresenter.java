@@ -38,8 +38,8 @@ public class LoginPresenter implements LoginInterface.Prsesenter {
             SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
             MaskTextWatcher textWatcher = new MaskTextWatcher(editEmail, maskFormatter);
             editEmail.addTextChangedListener(textWatcher);
-
-        } else if (EditTexttUtil.onValidInputEmail(editEmail) != null) {
+        }
+        if (EditTexttUtil.onValidInputEmail(editEmail) != null) {
             loginView.onLoginError(EditTexttUtil.onValidInputEmail(editEmail));
 
         } else if (EditTexttUtil.onValidInputPaswor(editPssword) != null) {
@@ -48,7 +48,7 @@ public class LoginPresenter implements LoginInterface.Prsesenter {
         } else {
             loginView.onInvisibleLayout();
             DataServer dataServer = new DataServer();
-            Observable<Login> call = dataServer.api.logaUsuario(email, password);
+            Observable<Login> call = dataServer.api.logaUsuario(editEmail.getText().toString(), editPssword.getText().toString());
             call.subscribeOn(Schedulers.newThread()).subscribe(new Observer<Login>() {
                 @Override
                 public void onSubscribe(Disposable d) {

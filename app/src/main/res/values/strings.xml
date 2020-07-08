@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TesteAndroidv2</string>
+    <string name="app_name">Meus gastos</string>
     <string name="strLogin">Login</string>
     <string name="strSenha">Senha...</string>
     <string name="strEmail">Email...</string>

@@ -59,6 +59,11 @@
     <dimen name="margin_end_text_card">16dp</dimen>
     <dimen name="margin_progress">32dp</dimen>
     <dimen name="dimen_progress">150dp</dimen>
+    <dimen name="corner_radius_card">8dp</dimen>
+    <dimen name="whidth_text3_Card">100dp</dimen>
+    <dimen name="whidth_text_desc_card">150dp</dimen>
+    <dimen name="width_text_valor_card">80dp</dimen>
+    <dimen name="width_text_data_card">50dp</dimen>
 
 
 </resources>

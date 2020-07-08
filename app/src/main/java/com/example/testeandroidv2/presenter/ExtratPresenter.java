@@ -97,7 +97,7 @@ public class ExtratPresenter implements ExtratInterface.Prsesenter{
         alert.setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-              ((Context) view).startActivity(new Intent((Context) view, LoginActivity.class));
+              view.onFinish();
             }
         })
                 .setNegativeButton(R.string.cancel, null);

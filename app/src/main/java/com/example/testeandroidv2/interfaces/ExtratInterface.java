@@ -10,12 +10,15 @@ public interface ExtratInterface {
         void setCount(String count);
         void setBalance(String balance);
         void setAgincy(String agency);
+        void onFinish();
+
     }
     interface Prsesenter{
         void onListSpending();
         void setDataUser(SharedPref preferences);
         void setDataServer(String userId);
         void onLogout();
+
     }
     interface Model{
 

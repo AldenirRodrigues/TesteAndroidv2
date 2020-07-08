@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements ExtratInterface.V
     }
 
     @Override
+    public void onFinish() {
+        finish();
+    }
+
+
+    @Override
     public void setAdapter(ExtratoAdapter adapter) {
         shimmerFrameLayout.setVisibility(View.GONE);
         shimmerFrameLayout.stopShimmer();
@@ -87,10 +93,12 @@ public class MainActivity extends AppCompatActivity implements ExtratInterface.V
     @OnClick(R.id.icLogout)
     void logout() {
         presenter.onLogout();
+
     }
 
     @Override
     public void onBackPressed() {
         presenter.onLogout();
+
     }
 }

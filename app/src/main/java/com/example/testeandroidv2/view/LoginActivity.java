@@ -52,5 +52,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.V
     void logar() {
         loginPresenter.onLogin(editEmail, editPassword);
     }
-
+    @Override
+    public void onFinish() {
+        finish();
+    }
 }

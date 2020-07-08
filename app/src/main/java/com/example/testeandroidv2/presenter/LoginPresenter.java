@@ -50,6 +50,7 @@ public class LoginPresenter implements LoginInterface.Prsesenter {
                 public void onNext(Login value) {
                     loginView.onLoginSuccess(new Intent((Context) loginView, MainActivity.class));
                     SharedPref.getInstance((Context) loginView).getSharedPref(value.getUserAccount());
+                    loginView.onFinish();
                 }
 
                 @Override
@@ -64,4 +65,6 @@ public class LoginPresenter implements LoginInterface.Prsesenter {
             });
         }
     }
+
+
 }

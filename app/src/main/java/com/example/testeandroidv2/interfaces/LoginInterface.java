@@ -8,9 +8,12 @@ public interface LoginInterface {
          void onLoginSuccess(Intent intent);
          void onLoginError(String menssage);
          void onPasswordError(String mensage);
+         void onFinish();
+
      }
      interface Prsesenter{
          void onLogin(EditText email, EditText password);
+
      }
      interface Model{
      }

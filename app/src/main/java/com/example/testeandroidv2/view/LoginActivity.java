@@ -2,14 +2,18 @@ package com.example.testeandroidv2.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testeandroidv2.R;
 import com.example.testeandroidv2.interfaces.LoginInterface;
 import com.example.testeandroidv2.presenter.LoginPresenter;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +28,11 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.V
     public EditText editEmail;
     @BindView(R.id.btnLogar)
     public Button logar;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.linearLayoutLogin)
+    LinearLayout linearLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +64,11 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface.V
     @Override
     public void onFinish() {
         finish();
+    }
+
+    @Override
+    public void onInvisibleLayout() {
+        linearLayout.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 }

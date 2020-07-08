@@ -9,6 +9,7 @@ public interface LoginInterface {
          void onLoginError(String menssage);
          void onPasswordError(String mensage);
          void onFinish();
+         void onInvisibleLayout();
 
      }
      interface Prsesenter{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,60 +8,86 @@
     tools:context=".view.LoginActivity">
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="@dimen/whidth_im_logo"
-        android:layout_height="@dimen/height_im_logo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_top_im_login"
-        android:src="@mipmap/logo" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="@dimen/dimen_progress"
+        android:layout_height="@dimen/dimen_progress"
+        android:layout_marginStart="@dimen/margin_progress"
+        android:layout_marginLeft="@dimen/margin_progress"
+        android:layout_marginEnd="@dimen/margin_progress"
+        android:layout_marginRight="@dimen/margin_progress"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <EditText
-        android:id="@+id/editEmailLogin"
+    <LinearLayout
+        android:id="@+id/linearLayoutLogin"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/whidth_edit_login"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/margin_left_edit_login"
-        android:inputType="textEmailAddress|textNoSuggestions"
-        android:background="@drawable/bg_edittext_login"
-        android:hint="@string/strEmail"
-        android:maxLines="1"
-        android:paddingLeft="@dimen/padin_left_edit_login">
+        android:layout_height="match_parent">
 
-    </EditText>
-
-        <EditText
-            android:id="@+id/editSenhaLogin"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/whidth_edit_login"
-            android:background="@drawable/bg_edittext_login"
-            android:hint="@string/strSenha"
-            android:layout_below="@+id/editEmailLogin"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_left_edit_login"
-            android:layout_marginTop="@dimen/margin_top_edit_login"
-            android:maxLines="1"
-            android:inputType="textPassword"
-            android:paddingLeft="@dimen/padin_left_edit_login" />
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnLogar"
-        android:layout_width="@dimen/width_btn"
-        android:layout_height="wrap_content"
-        android:text="@string/strLogin"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/size_btn"
-        android:background="@drawable/bg_button_login"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="@dimen/margin_btn"
-        android:layout_below="@+id/editSenhaLogin" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/whidth_im_logo"
+                android:layout_height="@dimen/height_im_logo"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_top_im_login"
+                android:src="@mipmap/logo" />
 
 
-</RelativeLayout>
+            <EditText
+                android:id="@+id/editEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/whidth_edit_login"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_left_edit_login"
+                android:background="@drawable/bg_edittext_login"
+                android:hint="@string/strEmail"
+                android:inputType="textEmailAddress|textNoSuggestions"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/padin_left_edit_login">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/editSenhaLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/whidth_edit_login"
+                android:layout_below="@+id/editEmailLogin"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_left_edit_login"
+                android:layout_marginTop="@dimen/margin_top_edit_login"
+                android:background="@drawable/bg_edittext_login"
+                android:hint="@string/strSenha"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/padin_left_edit_login" />
+
+            <Button
+                android:id="@+id/btnLogar"
+                android:layout_width="@dimen/width_btn"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editSenhaLogin"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="@dimen/margin_btn"
+                android:background="@drawable/bg_button_login"
+                android:text="@string/strLogin"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_btn" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

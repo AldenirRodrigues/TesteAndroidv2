@@ -57,6 +57,8 @@
     <dimen name="margin_top_text_card">16dp</dimen>
     <dimen name="margin_bottom_text_card">16dp</dimen>
     <dimen name="margin_end_text_card">16dp</dimen>
+    <dimen name="margin_progress">32dp</dimen>
+    <dimen name="dimen_progress">150dp</dimen>
 
 
 </resources>

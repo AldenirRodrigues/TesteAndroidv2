@@ -38,6 +38,7 @@ public class LoginPresenter implements LoginInterface.Prsesenter {
         } else if (EditTexttUtil.onValidInputPaswor(editPssword) != null){
             loginView.onPasswordError(EditTexttUtil.onValidInputPaswor(editPssword));
         } else {
+            loginView.onInvisibleLayout();
             DataServer dataServer = new DataServer();
             Observable<Login> call = dataServer.api.logaUsuario(email.getText().toString(), password.getText().toString());
             call.subscribeOn(Schedulers.newThread()).subscribe(new Observer<Login>() {

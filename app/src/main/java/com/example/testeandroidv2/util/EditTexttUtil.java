@@ -15,9 +15,9 @@ public class EditTexttUtil {
     public static String onValidInputEmail(EditText editLogin) {
         String email = editLogin.getText().toString();
 
-        SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
-        MaskTextWatcher textWatcher = new MaskTextWatcher(editLogin, maskFormatter);
-        editLogin.addTextChangedListener(textWatcher);
+//        SimpleMaskFormatter maskFormatter = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
+//        MaskTextWatcher textWatcher = new MaskTextWatcher(editLogin, maskFormatter);
+//        editLogin.addTextChangedListener(textWatcher);
 
         String cpf = email.replace(".", "").replace("-", "");
 

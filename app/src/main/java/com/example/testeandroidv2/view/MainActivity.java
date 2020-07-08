@@ -92,6 +92,5 @@ public class MainActivity extends AppCompatActivity implements ExtratInterface.V
     @Override
     public void onBackPressed() {
         presenter.onLogout();
-        super.onBackPressed();
     }
 }
